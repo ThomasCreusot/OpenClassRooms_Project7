@@ -46,7 +46,7 @@ def getActionParametersFromACsvFile(csvFileName):
         for line in reader:
             # actions_parameters filling
             action_cost = int(line['Cout_par_action_(en_euros)'])
-            action_benefit_percent = float(line['Bénéfice_(après_2_ans)'])
+            action_benefit_percent = float(line['Bénéfice_(après_2_ans)'])/100  # 7% is noted 7 in the table, as in client data
             action_benefit_euros = action_cost * action_benefit_percent
             actions_parameters[line['Action-#']] = [action_cost, action_benefit_euros]
 

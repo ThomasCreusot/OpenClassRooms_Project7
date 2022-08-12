@@ -20,7 +20,7 @@ Choice type of algorithm
 Mes criteres:
 -Je sors tous les algos instables
 
-4 equivalences + 2 cas qui se démarquent
+4 equivalences + 3 cas qui se démarquent
 Tri par insertion :     temporelle : entre n et n² ;    spatiale : 1 ;
 Tri à bulles :          temporelle : entre n et n² ;    spatiale : 1 ;
 Tri cockail :           temporelle : entre n et n² ;    spatiale : 1 ;
@@ -83,7 +83,7 @@ def getActionParametersFromACsvFile(csvFileName, headerActionName,
 
             # DECISION ABOUT SORTING
             # 'action_benefit_percent' or 'action_benefit_percent * action_benefit_euros'
-            sorting_criteria = action_benefit_percent 
+            sorting_criteria = action_benefit_percent  
             
             # Dictionnary solution
             #actions_parameters[line['Action-#']] = {'cost': action_cost, 
@@ -163,6 +163,7 @@ def main(csvFileName, headerActionName, headerActionCost, headerActionProfitPerc
     global available_money
     bought_actions = []
     total_benefit=0
+    total_cost=0
 
 
     print("PREDICTION ON FILE: ", csvFileName)
@@ -180,9 +181,11 @@ def main(csvFileName, headerActionName, headerActionCost, headerActionProfitPerc
             bought_actions.append(action[2])
             available_money -= action[3]
             total_benefit += action[1]
+            total_cost += action[3]
 
     print("Bought actions: ", bought_actions)
     print("Total_benefit: ", total_benefit) 
+    print("Total_cost: ", total_cost) 
 
     end_total_time = time()
     spent_total_time = end_total_time - start_total_time
